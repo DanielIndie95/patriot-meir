@@ -1,6 +1,7 @@
 <div>
     <p> hello world 1</p>
     {{vm.test}}
+
     <md-expansion-panel-group md-component-id="panelGroup" multiple>
         <md-expansion-panel md-component-id="panelOne">
 
@@ -35,8 +36,8 @@
         <md-expansion-panel md-component-id="panelTwo" >
 
             <md-expansion-panel-collapsed>
-                <div class="md-title">Meir</div>
-                <div class="md-summary">Summary</div>
+                <div class="md-title">Questions</div>
+                <div class="md-summary">Summary questions</div>
                 <md-expansion-panel-icon></md-expansion-panel-icon>
             </md-expansion-panel-collapsed>
 
@@ -44,14 +45,17 @@
             <md-expansion-panel-expanded>
 
                 <md-expansion-panel-header>
-                    <div class="md-title">Expanded Title</div>
-                    <div class="md-summary">Expanded Summary</div>
+                    <div class="md-title">Questions</div>
+                    <div class="md-summary">Summary questions: {{vm.questions.length}}</div>
                     <md-expansion-panel-icon></md-expansion-panel-icon>
                 </md-expansion-panel-header>
 
                 <md-expansion-panel-content>
-                    <h4>Content</h4>
-                    <p>Put content in here</p>
+                  <md-list>
+                    <md-list-item ng-repeat="question in vm.questions">
+                      <view-summary-question question="question"></view-summary-question>
+                    </md-list-item>
+                  </md-list>
                 </md-expansion-panel-content>
 
                 <md-expansion-panel-footer>
@@ -62,6 +66,7 @@
             </md-expansion-panel-expanded>
 
         </md-expansion-panel>
-    </md-expansion-panel-group>  
-  
+
+    </md-expansion-panel-group>
+
 </div>

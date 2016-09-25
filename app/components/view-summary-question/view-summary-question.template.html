@@ -1,0 +1,15 @@
+<div>
+    <h3>{{question.text}}</h3>
+
+    <input type="text" ng-model="question.answerText"/>
+    <button>Submit</button>
+
+    <h4>Answers:</h4>
+    <md-list>
+        <md-list-item ng-repeat="answer in question.answers">
+            <star-rating rating="answer.rating" on-rating-select="vote(answer)"></star-rating>
+            <div>{{answer.created}}</div>
+            <div>{{answer.text}}</div>
+        </md-list-item>
+    </md-list>
+</div>
