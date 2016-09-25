@@ -3,7 +3,7 @@
   padding: 0;
   display: inline-block;
 }
-.star-rating .star {
+.star-raiting-container .star {
   padding: 1px;
   color: #ddd;
   font-size: 20px;
@@ -12,9 +12,16 @@
   display: inline-block;
   cursor: pointer;
 }
-.star-rating .star.filled {
+.star-raiting-container .star.filled {
   color: #fd0;
 }
 .star-rating.readonly .star.filled {
   color: #666;
 }
+.star-rating-preview .star.filled{font-size: 55px; vertical-align: top; margin-right: 15px;}
+.star-rating-preview .rating-value{
+  font-size: 35px;
+}
+.star-rating-preview .star-info{display: inline-block;}
+.star-raiting-container{position:relative;}
+.star-rating{z-index: 10; position: absolute; left: 0px; background: #fff; border-radius: 5px;  top: 100%; box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);}

@@ -1,7 +1,10 @@
 <div ng-mouseleave="isOpen = false" class="star-raiting-container">
     <span ng-mouseenter="isOpen = true" class="star-rating-preview">
-        <i  class="fa fa-star"></i>
-        <span>{{rating.value}}/{{max}}</span>
+        <div class="star filled"><i  class="fa fa-star"></i></div>
+        <div class="star-info">
+          <span><span class="rating-value">{{rating.value}}</span>/<span class="rating-max">{{max}}</span></span>
+          <div class="rating-count">{{rating.count}}</div>
+        </div>
     </span>
     <ul ng-show="isOpen" class="star-rating" ng-class="{readonly: readonly}">
         <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">
