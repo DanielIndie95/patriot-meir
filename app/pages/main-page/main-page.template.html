@@ -3,13 +3,9 @@
     <input placeholder="Search"/>
     <button>Search</button>
   </div>
-  <div>
-    <label><input type="checkbox"/>History</label>
+  <div ng-repeat="category in main.categories">
+    <label><input type="checkbox"/>{{category}}</label>
   </div>
-  <div>
-    <label><input type="checkbox"/>Math</label>
-  </div>
-  <div>
-    <label><input type="checkbox"/>Science</label>
+
   </div>
 </div>
