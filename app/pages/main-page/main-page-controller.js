@@ -24,7 +24,7 @@
             value: 7.4
           },
           content: "asdasdasdasdasdasdasd",
-          tags: ['History']
+          tags: [{name: 'History'}, {name: 'Germany'}]
         }
       ];
     }

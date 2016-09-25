@@ -1,0 +1,8 @@
+<div>
+  <h3>{{summary.title}} <h4>By {{summary.author}}</h4></h3>
+  <star-rating rating="summary.rating"></star-rating>
+  <div>
+    <label>Tags:</label>
+    <tag-view ng-repeat="tag in summary.tags"></tag-view>
+  </div>
+</div>
