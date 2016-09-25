@@ -1,4 +1,4 @@
 (function()
 {
-    var app = angular.module('summarySharing', ['ngRoute']);
+    var app = angular.module('summarySharing', ['ngRoute' , 'ngMaterial' , 'material.components.expansionPanels']);
 })();
