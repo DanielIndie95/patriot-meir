@@ -1,4 +1,4 @@
 (function()
 {
-    var app = angular.module('summarySharing', []);
+    var app = angular.module('summarySharing', ['ngRoute']);
 })();
