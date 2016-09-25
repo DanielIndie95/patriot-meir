@@ -24,4 +24,4 @@
 }
 .star-rating-preview .star-info{display: inline-block;}
 .star-raiting-container{position:relative;}
-.star-rating{z-index: 10; position: absolute; left: 0px; background: #fff; border-radius: 5px;  top: 100%; box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);}
+.star-rating{width: 208px; z-index: 10; position: absolute; left: 0px; background: #fff; border-radius: 5px;  top: 100%; box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);}
