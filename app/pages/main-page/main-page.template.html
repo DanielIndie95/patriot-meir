@@ -2,10 +2,17 @@
   <div>
     <input placeholder="Search"/>
     <button>Search</button>
-  </div>
-  <div ng-repeat="category in main.categories">
-    <label><input type="checkbox"/>{{category}}</label>
+    <button>Add Summary</button>
   </div>
 
+  <div>
+    <label>Categories:</label>
+    <div ng-repeat="category in main.categories">
+      <label><input type="checkbox"/>{{category}}</label>
+    </div>
+  </div>
+
+  <div ng-repeat="summary in main.summaries">
+    <summary-main-page-view></summary-main-page-view>
   </div>
 </div>
