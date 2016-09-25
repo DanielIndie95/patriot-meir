@@ -19,9 +19,12 @@
         {
           title: "World War II Summary",
           author: "Adolf Hitler",
-          likes: 5,
-          dislikes: 3,
-          content: "asdasdasdasdasdasdasd"
+          rating: {
+            count: 345,
+            value: 7.4
+          },
+          content: "asdasdasdasdasdasdasd",
+          tags: ['History']
         }
       ];
     }
