@@ -3,6 +3,7 @@
   padding: 0;
   display: inline-block;
 }
+html,body{background: #fff;}
 .star-raiting-container .star {
   padding: 1px;
   color: #ddd;
@@ -23,5 +24,34 @@
   font-size: 35px;
 }
 .star-rating-preview .star-info{display: inline-block;}
-.star-raiting-container{position:relative;}
+.star-raiting-container{position:relative;margin-left: 15px;}
 .star-rating{width: 208px; z-index: 10; position: absolute; left: 0px; background: #fff; border-radius: 5px;  top: 100%; box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);}
+
+star-rating, .summary-header-container{display: inline-block;}
+
+
+.summary-md-list{text-align: center;}
+.summaries-list-item{display: inline-block; text-align: left;}
+.summaries-list-item{border: 1px solid rgba(0, 0, 0, 0.3); margin: 5px;}
+md-chips.md-default-theme .md-chips, md-chips .md-chips{box-shadow: none;}
+
+
+.fade-animation {
+  display: block;
+    opacity: 1;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade-animation.ng-enter {
+    opacity: 0;
+}
+.fade-animation.ng-enter-active {
+    opacity: 1;
+}
+.fade-animation.ng-leave {
+    position: absolute; top: 70px;
+    opacity: 1;
+}
+.fade-animation.ng-leave-active {
+    opacity: 0;
+}

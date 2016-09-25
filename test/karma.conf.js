@@ -32,6 +32,8 @@ module.exports = function(config) {
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-touch/angular-touch.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'app/bower_components/angular-material/angular-material.js',
+      'app/bower_components/angular-material-expansion-panel/dist/md-expansion-panel.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

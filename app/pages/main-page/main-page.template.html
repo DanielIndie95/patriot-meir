@@ -19,9 +19,9 @@
             <label><input type="checkbox"/>{{category}}</label>
         </div>
     </div>
-    <md-list>
-        <md-list-item ng-repeat="summary in main.summaries">
-            <summary-main-page-view summary="summary"></summary-main-page-view>
+    <md-list class="summary-md-list">
+        <md-list-item class="summaries-list-item" ng-repeat="summary in main.summaries">
+            <summary-main-page-view class="summary-page-view" summary="summary"></summary-main-page-view>
         </md-list-item>
     </md-list>
 </div>
