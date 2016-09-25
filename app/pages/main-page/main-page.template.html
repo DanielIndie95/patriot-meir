@@ -1,18 +1,27 @@
 <div>
-  <div>
-    <input placeholder="Search"/>
-    <button>Search</button>
-    <button>Add Summary</button>
-  </div>
-
-  <div>
-    <label>Categories:</label>
-    <div ng-repeat="category in main.categories">
-      <label><input type="checkbox"/>{{category}}</label>
+    <div>
+        <input placeholder="Search" />
+        <button>Search</button>
+        <button>Add Summary</button>
     </div>
-  </div>
 
-  <div ng-repeat="summary in main.summaries">
-    <summary-main-page-view></summary-main-page-view>
-  </div>
+  <md-sidenav md-is-locked-open="true">
+    <md-list>
+      <md-list-item ng-repeat="category in main.categories">
+        <md-checkbox aria-label="Category">{{category}}</md-checkbox>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+
+    <div>
+        <label>Categories:</label>
+        <div ng-repeat="category in main.categories">
+            <label><input type="checkbox"/>{{category}}</label>
+        </div>
+    </div>
+    <md-list>
+        <md-list-item ng-repeat="summary in main.summaries">
+            <summary-main-page-view summary="summary"></summary-main-page-view>
+        </md-list-item>
+    </md-list>
 </div>

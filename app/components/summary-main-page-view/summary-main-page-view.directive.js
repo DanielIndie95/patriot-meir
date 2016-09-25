@@ -3,6 +3,9 @@ angular.module('summarySharing')
     return {
       restrict: 'E',
       templateUrl: 'components/summary-main-page-view/summary-main-page-view.directive.html',
-      replace: true
+      replace: true,
+      scope: {
+        summary: '='
+      }
     }
   });

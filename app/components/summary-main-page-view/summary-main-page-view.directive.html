@@ -1,8 +1,15 @@
 <div>
-  <h3>{{summary.title}} <h4>By {{summary.author}}</h4></h3>
-  <star-rating rating="summary.rating"></star-rating>
-  <div>
-    <label>Tags:</label>
-    <tag-view ng-repeat="tag in summary.tags"></tag-view>
-  </div>
+    <h3><a href="/#/">{{summary.title}}</a></h3>
+    <div>
+        <h4>By <a href="/#/">{{summary.author}}</a></h4>
+
+        <star-rating rating="summary.rating"></star-rating>
+    </div>
+    <div>
+        <md-chips ng-model="summary.tags" readonly="true">
+            <md-chip-template>
+                <a href="/#/">{{$chip.name}}</a>
+            </md-chip-template>
+        </md-chips>
+    </div>
 </div>
