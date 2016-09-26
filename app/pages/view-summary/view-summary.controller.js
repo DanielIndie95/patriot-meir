@@ -6,7 +6,7 @@
     ViewSummaryCtrl.$inject = ["$scope", "votesModel"];
 
     function ViewSummaryCtrl($scope, votesModel) {
-
+    var vm  =  this;
     vm.questions = getQuestions();
     vm.comments = getComments();
 
@@ -88,7 +88,6 @@
           })
         });
       }
-    }
     }
 
     function getComments() {
