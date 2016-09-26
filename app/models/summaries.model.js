@@ -21,27 +21,28 @@
     api.getQuestionsForSummary = getQuestionsForSummary;
     api.getVotesForSummary = getVotesForSummary;
     api.addCommentForSummary = addCommentForSummary;
+    api.getSummaries = getSummaries;
 
     function addNewSummary(header, content, tags, questions) {
       var user = usersModel.getCurrentUser();
 
       if (user) {
-        var summary = createSummary(header, content, tags, user , questions);
+        var summary = createSummary(header, content, tags, user, questions);
         console.log(summary);
         return firebase.database().ref(`/summaries/`).push(summary)
-          .then(function(data){
-              return data.getKey();
+          .then(function (data) {
+            return data.getKey();
           });
       }
     }
 
-    function createSummary(header, content, tags, user,questions) {
+    function createSummary(header, content, tags, user, questions) {
       return {
         content: content,
         tags: tags,
         ownerId: user.uid,
         header: header,
-        questions : questions
+        questions: questions
       };
     }
 
@@ -55,6 +56,25 @@
         var comments = convertDbCommentsToComments(summary.comments);
         summary.comments = comments;
         return summary;
+      })
+    }
+
+    function getSummaries() {
+      return firebase.database().ref('/summaries/').once('value').then(function (data) {
+        var summaries=  data.val();
+        var result = [];
+        for(var id in summaries){
+          var summary = summaries[id];
+          var comments = convertDbCommentsToComments(summary.comments);
+          summary.comments = comments;
+          summary.id = id;
+
+          result.push(summary);
+          usersModel.getUserName(summary.ownerId).then(function(userName){
+            summary.author = userName;
+          });
+        }
+        return result;
       })
     }
 
@@ -74,9 +94,11 @@
     }
 
     function convertDbCommentsToComments(dbComments) {
-      commentsData.map(function (commentData) {
-        return convertDbCommentToComment(commentData);
-      });
+      if(dbComments!= undefined) {
+        dbComments.map(function (commentData) {
+          return convertDbCommentToComment(commentData);
+        });
+      }
     }
 
     function convertDbCommentToComment(dbComment) {

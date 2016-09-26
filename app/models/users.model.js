@@ -16,6 +16,7 @@
     api.getCurrentUser = getCurrentUser;
     api.login = login;
     api.auth = auth;
+    api.getUserName = getUserName;
 
     function createUser(name, email, password) {
       return firebase.auth().createUserWithEmailAndPassword(email, password, {
@@ -28,37 +29,62 @@
         // ...
       })
         .then(function (authData) {
-          return firebase.auth().currentUser.updateProfile({
+
+          firebase.auth().currentUser.updateProfile({
             displayName: name,
-            score : 0
-          })
+            score: 0
+          });
+          return createUserInUsers(authData.user);
         });
+    }
+
+    function createExternalAuthUser(user) {
+      return createUserInUsers(user);
+    }
+
+    function createUserInUsers(user) {
+      return firebase.database().ref(`/users/${user.uid}`).set({
+        displayName: user.displayName,
+        uid: user.uid,
+        email: user.email
+      });
     }
 
     function getUserScore(userId) {
-        return firebase.database().ref(`users/${userId}`).once('value').then(function(data){
-          var user = data.val();
-          return user.score;
-        });
+      return firebase.database().ref(`users/${userId}`).once('value').then(function (data) {
+        var user = data.val();
+        return user.score;
+      });
     }
 
-    function getCurrentUser(){
+    function getUserName(userId) {
+      return firebase.database().ref(`users/${userId}`).once('value').then(function (data) {
+        var user = data.val();
+        return user.displayName;
+      });
+    }
+
+    function getCurrentUser() {
       var user = firebase.auth().currentUser;
       return user;
     }
 
-    function login(email , password)
-    {
+    function login(email, password) {
       return firebase.auth().signInWithEmailAndPassword(
         email,
         password
       );
     }
 
-    function auth(){
+    function auth() {
+      if (getCurrentUser())
+        return;
       var provider = new firebase.auth.GoogleAuthProvider();
 
-      return firebase.auth().signInWithPopup(provider);
+      return firebase.auth().signInWithPopup(provider).then(function (authData) {
+        return createExternalAuthUser(authData.user);
+      });
+
     }
 
     ctr();
