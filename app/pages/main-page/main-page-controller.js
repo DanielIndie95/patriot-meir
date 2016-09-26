@@ -21,7 +21,7 @@
 
       // getData('');
       return [{
-        title: "World War II Summary",
+        header: "World War II Summary",
         author: "Leo Tolstoy",
         rating: {
           count: 169,
@@ -31,7 +31,7 @@
         tags: [{name: 'Math'}]
       },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -41,7 +41,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -51,7 +51,7 @@
           tags: [{name: 'History'}, {name: 'Science'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -61,7 +61,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -71,7 +71,7 @@
           tags: [{name: 'Science'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -81,7 +81,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -91,7 +91,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -101,7 +101,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -111,7 +111,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -121,7 +121,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "World War II Summary",
+          header: "World War II Summary",
           author: "Leo Tolstoy",
           rating: {
             count: 169,
@@ -131,7 +131,7 @@
           tags: [{name: 'History'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -141,7 +141,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -151,7 +151,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -161,7 +161,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -171,7 +171,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -181,7 +181,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -191,7 +191,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
@@ -201,7 +201,7 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
         {
-          title: "War and Peace",
+          header: "War and Peace",
           author: "Adolf Hitler",
           rating: {
             count: 345,
