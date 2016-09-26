@@ -1,0 +1,63 @@
+<input id="editor" rows="10" cols="80"/>
+
+<md-expansion-panel-group md-component-id="panelGroup" multiple>
+  <md-expansion-panel md-component-id="panelOne">
+
+    <md-expansion-panel-collapsed>
+      <div class="md-title">Add Questions</div>
+      <div class="md-summary"></div>
+      <md-expansion-panel-icon></md-expansion-panel-icon>
+    </md-expansion-panel-collapsed>
+
+
+    <md-expansion-panel-expanded>
+
+      <md-expansion-panel-header ng-click="$panel.collapse()">
+        <div class="md-title">Questions</div>
+        <div class="md-summary"></div>
+        <md-expansion-panel-icon></md-expansion-panel-icon>
+      </md-expansion-panel-header>
+
+      <md-expansion-panel-content>
+        <div>
+          <md-input-container>
+            <label>Question</label>
+            <textarea class="newQuestionTextArea" type="text" ng-model="newSummary.newQuestion"/>
+          </md-input-container>
+        </div>
+        <div>
+          <md-input-container>
+            <label>Answer</label>
+            <textarea class="newAnswerTextArea" type="text" ng-model="newSummary.newAnswer"/>
+          </md-input-container>
+        </div>
+        <div>
+          <md-button ng-click="newSummary.onAddNewQuestion()">Add</md-button>
+        </div>
+        <div>
+          <md-content>
+            <md-list flex>
+              <md-subheader class="md-no-sticky">Questions:</md-subheader>
+              <md-list-item ng-repeat="question in newSummary.questions">
+                <div>
+                  <h3>{{question.question}}</h3>
+                  <p>{{question.answer}}</p>
+                </div>
+              </md-list-item>
+
+            </md-list>
+          </md-content>
+        </div>
+      </md-expansion-panel-content>
+
+      <md-expansion-panel-footer ng-click="$panel.collapse()">
+        <div flex></div>
+        <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
+      </md-expansion-panel-footer>
+
+    </md-expansion-panel-expanded>
+
+  </md-expansion-panel>
+</md-expansion-panel-group>
+
+<md-button class="md-primary md-raised" ng-click="newSummary.onUploadSummary()">Upload</md-button>

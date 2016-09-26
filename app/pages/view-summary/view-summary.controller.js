@@ -7,12 +7,11 @@
 
     function ViewSummaryCtrl($scope, votesModel) {
 
-        // Get a reference to the database service
-        var vm = this;
-        vm.addRating = addRating;
-        vm.test = "hello world";
+    vm.questions = getQuestions();
+    vm.comments = getComments();
 
-      vm.questions = [
+    function getQuestions() {
+      return [
         {
           text: 'question 1',
           answers: [
@@ -41,7 +40,7 @@
               text: 'answer 1.3'
             }
           ]
-        },{
+        }, {
           text: 'question 2',
           answers: [
             {
@@ -90,5 +89,35 @@
         });
       }
     }
+    }
+
+    function getComments() {
+      return [
+        {
+          user: {
+            name: 'Daniel',
+            id: 'abinav_t'
+          },
+          text: 'Vim nullam fastidii ei, nullam commune ei mei, pri te tation possim. Alii sensibus neglegentur cum an, corpora laboramus posidonium ei pro. Vero graecis vim an, meis tractatos conclusionemque sea no, mutat ludus cu vim. Cu sit diam aeterno, error civibus ei pro.',
+          created: '13/05/2016'
+        },
+        {
+          user: {
+            name: 'Yosi',
+            id: 'cheth'
+          },
+          text: 'When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$',
+          created: '17/05/2016'
+        },
+        {
+          user: {
+            name: 'Eyal Golan',
+            id: 'ritu'
+          },
+          text: 'Vim nullam fastidii ei, nullam commune ei mei, pri te tation possim. Alii sensibus neglegentur cum an, corpora laboramus posidonium ei pro. Vero graecis vim an, meis tractatos conclusionemque sea no, mutat ludus cu vim. Cu sit diam aeterno, error civibus ei pro.',
+          created: '17/05/2016'
+        }];
+    }
+  }
 })();
 

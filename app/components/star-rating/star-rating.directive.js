@@ -17,7 +17,9 @@
         if (scope.isOpen == undefined) {
           scope.isOpen = false;
         }
-
+        scope.rating.percent = function() {
+          return Math.floor((1-scope.rating.value/scope.max)*100);
+        }
         scope.toggle = function (index) {
           if (scope.readonly == undefined || scope.readonly === false) {
             scope.rating.value = index + 1;
