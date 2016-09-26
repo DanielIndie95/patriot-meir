@@ -1,25 +1,27 @@
 <div>
-    <div>
-        <input placeholder="Search" />
-        <md-button>Search</md-button>
-        <md-button href="#/newSummary">Add Summary</md-button>
-    </div>
+  <md-toolbar layout="col">
+    <input placeholder="Search"/>
+    <md-button>Search</md-button>
+    <md-button class=" md-primary md-raised" href="#/newSummary">Add Summary</md-button>
+  </md-toolbar>
 
-  <md-sidenav md-is-locked-open="true">
-    <md-toolbar>
-<h1>Categories</h1>
-    </md-toolbar>
+  <section layout="row">
+    <md-sidenav md-is-locked-open="true" flex="40">
+      <md-toolbar>
+        <h1>Categories</h1>
+      </md-toolbar>
       <md-list>
         <md-list-item ng-repeat="category in main.categories">
           <md-checkbox ng-model="category.selected"></md-checkbox>
           <span class="md-title">{{category.name}}</span>
         </md-list-item>
       </md-list>
-  </md-sidenav>
+    </md-sidenav>
 
-  <md-list class="summary-md-list">
+    <md-list class="summary-md-list">
       <md-list-item class="summaries-list-item" ng-repeat="summary in main.summaries">
-          <summary-main-page-view class="summary-page-view" summary="summary"></summary-main-page-view>
+        <summary-main-page-view class="summary-page-view" summary="summary"></summary-main-page-view>
       </md-list-item>
-  </md-list>
+    </md-list>
+  </section>
 </div>
