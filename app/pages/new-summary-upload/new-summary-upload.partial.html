@@ -1,4 +1,10 @@
 <input id="editor" rows="10" cols="80"/>
+<md-input-container ng-keypress="newSummary.onAddTag()">
+  <label>Add Tags</label>
+  <input type="text" ng-model="newSummary.newTag"/>
+</md-input-container>
+
+<md-chips ng-model="newSummary.tags"></md-chips>
 
 <md-expansion-panel-group md-component-id="panelGroup" multiple>
   <md-expansion-panel md-component-id="panelOne">

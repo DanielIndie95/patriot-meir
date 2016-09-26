@@ -8,6 +8,9 @@
 
     vm.onUploadSummary = onUploadSummary;
     vm.onAddNewQuestion = onAddNewQuestion;
+    vm.onAddTag = onAddTag;
+    vm.tags = [];
+
     vm.questions = [
       {
         question: "How is the supreme leader?",
@@ -38,6 +41,14 @@
       vm.questions.push({question: vm.newQuestion, answer: vm.newAnswer});
       vm.newAnswer = '';
       vm.newQuestion = '';
+    }
+
+    function onAddTag() {
+      //on enter key pressed
+      if (event.keyCode == 13) {
+        vm.tags.push(vm.newTag);
+        vm.newTag = '';
+      }
     }
   }
 
