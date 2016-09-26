@@ -1,215 +1,52 @@
 (function () {
-  angular.module('summarySharing').controller('MainPageCtrl', ['$scope', MainController])
+  angular.module('summarySharing').controller('MainPageCtrl', ['$scope', 'summariesModel',
+    'usersModel', MainController])
 
-  function MainController() {
+  function MainController($scope, summariesModel, usersModel) {
     var vm = this;
 
     vm.categories = getCategories();
-    vm.summaries = getSummaries();
+    vm.summaries;
 
-        function getCategories() {
-            return [
-              {name:'Math'},
-              {name: 'Science'},
-              {name: 'History'
-            }];
-        }
+    getSummaries();
+
+    function getCategories() {
+      return [
+        {name: 'Math'},
+        {name: 'Science'},
+        {
+          name: 'History'
+        }];
+    }
 
     function getSummaries() {
+      usersModel.auth().then(function () {
+        summariesModel.getSummaries()
+          .then(function (summaries) {
+            vm.summaries = summaries;
+            for (var i = 0; i < vm.summaries.length; i++) {
+              var summary = vm.summaries[i];
 
-      // getData('');
-      return [{
-        title: "World War II Summary",
-        author: "Leo Tolstoy",
-        rating: {
-          count: 169,
-          value: 5.1
-        },
-        content: "jsdfjnk;lds'gmnbs hiyfhijdsl;jnbkalisodfk'plkadsbjugofjopasd",
-        tags: [{name: 'History'}]
-      },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "World War II Summary",
-          author: "Leo Tolstoy",
-          rating: {
-            count: 169,
-            value: 5.1
-          },
-          content: "jsdfjnk;lds'gmnbs hiyfhijdsl;jnbkalisodfk'plkadsbjugofjopasd",
-          tags: [{name: 'History'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-        {
-          title: "War and Peace",
-          author: "Adolf Hitler",
-          rating: {
-            count: 345,
-            value: 7.4
-          },
-          content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
-        },
-      ];
+              summariesModel.getVotesForSummary(summary.id)
+                .then(function (ratings) {
+                  var avg = 0;
+                  if (ratings.length) {
+                    var sum = ratings.reduce(function (a, b) {
+                      return a + b;
+                    });
+                    avg = sum / ratings.length;
+                  }
+                  summary.rating = {
+                    count: ratings.length,
+                    value: avg
+                  };
+                  $scope.$digest();
+                });
+            }
+          });
+      });
     }
+
 
     function getData(url) {
       // $http.get('')
@@ -222,4 +59,5 @@
       //   });
     }
   }
-})();
+})
+();

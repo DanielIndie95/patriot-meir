@@ -1,13 +1,13 @@
 <div>
     <div class="summary-header-container">
-        <h3><a href="/#/">{{summary.title}}</a></h3>
+        <h3><a href="/#/">{{summary.header}}</a></h3>
         <h4>By <a href="/#/">{{summary.author}}</a></h4>
     </div>
     <star-rating rating="summary.rating"></star-rating>
     <div>
         <md-chips ng-model="summary.tags" readonly="true">
             <md-chip-template>
-                <a href="/#/">{{$chip.name}}</a>
+                <a href="/#/">{{$chip}}</a>
             </md-chip-template>
         </md-chips>
     </div>
