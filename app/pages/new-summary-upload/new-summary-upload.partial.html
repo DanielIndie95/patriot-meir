@@ -1,5 +1,4 @@
 <input id="editor" rows="10" cols="80"/>
-<md-button ng-click="newSummary.onUploadSummary()">Upload</md-button>
 
 <md-expansion-panel-group md-component-id="panelGroup" multiple>
   <md-expansion-panel md-component-id="panelOne">
@@ -23,14 +22,16 @@
         <div>
           <md-input-container>
             <label>Question</label>
-            <textarea class="newQuestionTextArea" type="text"/>
+            <textarea class="newQuestionTextArea" type="text" ng-model="newSummary.newQuestion"/>
           </md-input-container>
-
+        </div>
+        <div>
           <md-input-container>
             <label>Answer</label>
-            <textarea class="newAnswerTextArea" type="text"/>
+            <textarea class="newAnswerTextArea" type="text" ng-model="newSummary.newAnswer"/>
           </md-input-container>
-
+        </div>
+        <div>
           <md-button ng-click="newSummary.onAddNewQuestion()">Add</md-button>
         </div>
         <div>
@@ -58,3 +59,5 @@
 
   </md-expansion-panel>
 </md-expansion-panel-group>
+
+<md-button class="md-primary md-raised" ng-click="newSummary.onUploadSummary()">Upload</md-button>

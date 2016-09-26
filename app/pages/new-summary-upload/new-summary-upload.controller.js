@@ -35,7 +35,9 @@
     }
 
     function onAddNewQuestion() {
-      console.log('new answer')
+      vm.questions.push({question: vm.newQuestion, answer: vm.newAnswer});
+      vm.newAnswer = '';
+      vm.newQuestion = '';
     }
   }
 
