@@ -13,6 +13,7 @@
                 templateUrl: 'pages/main-page/main-page.template.html',
                 controller: 'MainPageCtrl',
                 controllerAs: 'vm'
-            });
+            })
+          .otherwise('/main');
     }
 })();
