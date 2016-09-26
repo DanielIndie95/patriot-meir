@@ -1,13 +1,12 @@
 (function () {
 
-  var app = angular.module('summarySharing');
-  app.controller("viewSummaryCtrl", ViewSummaryCtrl);
+    var app = angular.module('summarySharing');
+    app.controller("viewSummaryCtrl", ViewSummaryCtrl);
 
-  ViewSummaryCtrl.$inject = [];
+    ViewSummaryCtrl.$inject = ["$scope", "votesModel"];
 
-  function ViewSummaryCtrl() {
-    var vm = this;
-
+    function ViewSummaryCtrl($scope, votesModel) {
+    var vm  =  this;
     vm.questions = getQuestions();
     vm.comments = getComments();
 
@@ -71,6 +70,24 @@
           ]
         }
       ];
+      function addRating(number) {
+
+        firebase.auth().signInWithEmailAndPassword("meirisstupid2@gmail.com", "1234567").catch(function (error, authData) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+
+          }
+        ).then(function (authData, x) {
+          firebase.auth().currentUser.updateProfile({
+            displayName: "merichka"
+          }).then(function(){
+            votesModel.addVote("bomtoin12", number);
+            var votes = votesModel.getVotesForItem("bomtoin12" , number);
+          })
+        });
+      }
     }
 
     function getComments() {
@@ -102,3 +119,4 @@
     }
   }
 })();
+
