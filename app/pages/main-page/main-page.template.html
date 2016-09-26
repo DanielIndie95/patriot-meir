@@ -2,7 +2,7 @@
 
   <section layout="row">
     <div class="categories-sidebar-container">
-      
+
       <div class="searchContainer">
         <md-input-container>
           <label>Search</label>
@@ -22,7 +22,7 @@
     </div>
 
     <md-list class="summary-md-list">
-      <md-list-item class="summaries-list-item" ng-repeat="summary in main.summaries">
+      <md-list-item class="summaries-list-item" ng-repeat="summary in main.summaries | summariesFilter : main.categories">
         <summary-main-page-view class="summary-page-view" summary="summary"></summary-main-page-view>
       </md-list-item>
     </md-list>

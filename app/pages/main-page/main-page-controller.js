@@ -1,5 +1,8 @@
 (function () {
-  angular.module('summarySharing').controller('MainPageCtrl', ['$scope', MainController])
+  angular
+    .module('summarySharing')
+    .controller('MainPageCtrl', MainController)
+    .filter('summariesFilter', summariesFilter);
 
   function MainController() {
     var vm = this;
@@ -7,13 +10,12 @@
     vm.categories = getCategories();
     vm.summaries = getSummaries();
 
-        function getCategories() {
-            return [
-              {name:'Math'},
-              {name: 'Science'},
-              {name: 'History'
-            }];
-        }
+    function getCategories() {
+      return [
+        {name: 'Math'},
+        {name: 'Science'},
+        {name: 'History'}];
+    }
 
     function getSummaries() {
 
@@ -26,7 +28,7 @@
           value: 5.1
         },
         content: "jsdfjnk;lds'gmnbs hiyfhijdsl;jnbkalisodfk'plkadsbjugofjopasd",
-        tags: [{name: 'History'}]
+        tags: [{name: 'Math'}]
       },
         {
           title: "War and Peace",
@@ -46,7 +48,7 @@
             value: 7.4
           },
           content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
+          tags: [{name: 'History'}, {name: 'Science'}]
         },
         {
           title: "War and Peace",
@@ -66,7 +68,7 @@
             value: 7.4
           },
           content: "asdasdasdasdasdasdasd",
-          tags: [{name: 'History'}, {name: 'Germany'}]
+          tags: [{name: 'Science'}, {name: 'Germany'}]
         },
         {
           title: "War and Peace",
@@ -210,16 +212,24 @@
         },
       ];
     }
+  }
 
-    function getData(url) {
-      // $http.get('')
-      //   .then(function (response) {
-      //       return response.data;
-      //   },
-      //   function (response) {
-      //       console.log('error');
-      //       console.log(response)
-      //   });
+  function summariesFilter() {
+    return function (summaries, categories) {
+      var visibleSummaries = [];
+      var categoriesText = categories
+        .filter(category => category.selected)
+        .map(category => category.name);
+      if(categoriesText.length === 0){
+        return summaries;
+      }
+      summaries.forEach(summary => {
+        if (summary.tags.filter(tag => categoriesText.indexOf(tag.name) > -1).length > 0) {
+          visibleSummaries.push(summary);
+        }
+      });
+      return visibleSummaries;
     }
   }
+
 })();
