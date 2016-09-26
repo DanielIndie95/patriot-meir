@@ -2,9 +2,9 @@
   'use strict';
   var app = angular.module("summarySharing");
   var votes = app.factory("summariesModel", SummariesModel);
-  SummariesModel.$inject = ['votesModel' , 'usersModel'];
+  SummariesModel.$inject = ['votesModel', 'usersModel'];
 
-  function SummariesModel(votesModel , usersModel) {
+  function SummariesModel(votesModel, usersModel) {
     var database;
 
     function ctr() {
@@ -22,33 +22,35 @@
     api.getVotesForSummary = getVotesForSummary;
     api.addCommentForSummary = addCommentForSummary;
 
-    function addNewSummary(header, content, tags) {
+    function addNewSummary(header, content, tags, questions) {
       var user = usersModel.getCurrentUser();
 
       if (user) {
-        var summary = createSumamry(header, content, tags, user);
-        var id  = firebase.database().ref(`/summaries/`).push(summary);
-        return id;
+        var summary = createSummary(header, content, tags, user , questions);
+        console.log(summary);
+        return firebase.database().ref(`/summaries/`).push(summary)
+          .then(function(data){
+              return data.getKey();
+          });
       }
     }
 
-    function createSummary(header, content, tags, user) {
-      return new {
+    function createSummary(header, content, tags, user,questions) {
+      return {
         content: content,
         tags: tags,
         ownerId: user.uid,
-        header: header
+        header: header,
+        questions : questions
       };
     }
 
-    function getSummaryRef(summaryId)
-    {
+    function getSummaryRef(summaryId) {
       return firebase.database().ref(`/summaries/${summaryId}`);
     }
 
-    function getSummary(summaryId)
-    {
-      return getSummaryRef().once('value').then(function(data){
+    function getSummary(summaryId) {
+      return getSummaryRef().once('value').then(function (data) {
         var summary = data.val();
         var comments = convertDbCommentsToComments(summary.comments);
         summary.comments = comments;
@@ -64,47 +66,48 @@
       summary.update({'tags': tags});
     }
 
-    function getCommentsForSummary(summaryId){
-      return getSummaryRef().once('value').then(function(data){
+    function getCommentsForSummary(summaryId) {
+      return getSummaryRef().once('value').then(function (data) {
         var commentsData = data.val().comments;
         return convertDbCommentsToComments(commentsData);
       })
     }
 
-    function convertDbCommentsToComments(dbComments)
-    {
-      commentsData.map((commentData) => convertDbCommentToComment(commentData) );
+    function convertDbCommentsToComments(dbComments) {
+      commentsData.map(function (commentData) {
+        return convertDbCommentToComment(commentData);
+      });
     }
 
-    function convertDbCommentToComment(dbComment)
-    {
+    function convertDbCommentToComment(dbComment) {
       return new {
-        'text' : dbComment.content,
-        'created' : dbComment.created,
-        'user' : {
-          'name' : usersModel.getCurrentUser().displayName,
-          'id' : usersModel.getCurrentUser().uid
+        'text': dbComment.content,
+        'created': dbComment.created,
+        'user': {
+          'name': usersModel.getCurrentUser().displayName,
+          'id': usersModel.getCurrentUser().uid
         }
       };
     }
 
-    function addCommentForSummary(summaryId , comment){
+    function addCommentForSummary(summaryId, comment) {
       var comments = getCommentsForSummary(summaryId);
       var user = usersModel.getCurrentUser();
-      var newComment = createComment(comment , user);
+      var newComment = createComment(comment, user);
       comments.push(newComment);
       var summary = firebase.database().ref(`/summaries/${summaryId}`);
 
       summary.update({'comments': comments});
     }
 
-    function createComment(text , user){
+    function createComment(text, user) {
       return {
-        content : text ,
+        content: text,
         created: new Date(),
-        user : user.uid
+        user: user.uid
       };
     }
+
     function getTagsForSummary(summaryId) {
       return firebase.database().ref(`/summaries/${summaryId}`).once('value').then(function (data) {
         var summary = data.val();
@@ -112,19 +115,17 @@
       });
     }
 
-    function addQuestionForSummary(summaryId , question , answer)
-    {
+    function addQuestionForSummary(summaryId, question, answer) {
       var questions = getQuestionsForSummary(summaryId);
-      var newQuestion = createNewQuestion(question , answer);
+      var newQuestion = createNewQuestion(question, answer);
       questions.push(newQuestion);
       var summary = firebase.database().ref(`/summaries/${summaryId}`);
 
       summary.update({'questions': questions});
     }
 
-    function addAnswerForQuestion(summaryId , questionId , answer)
-    {
-      var answers = getAnswersForQuestion(summaryId , questionId);
+    function addAnswerForQuestion(summaryId, questionId, answer) {
+      var answers = getAnswersForQuestion(summaryId, questionId);
       var questions = getQuestionsForSummary(summaryId);
       answers.push(answer);
       questions[questionId].answers = answers;
@@ -141,26 +142,25 @@
       });
     }
 
-    function getAnswersForQuestion(summaryId , questionId){
+    function getAnswersForQuestion(summaryId, questionId) {
       return firebase.database().ref(`/summaries/${summaryId}`).once('value').then(function (data) {
         var summary = data.val();
-          for(var question in summary.questions)
-          {
-            if(question == questionId)
-            {
-              return summary.questions[question].answers;
-            }
+        for (var question in summary.questions) {
+          if (question == questionId) {
+            return summary.questions[question].answers;
           }
+        }
       });
     }
 
-    function createNewQuestion(content , answers){
+    function createNewQuestion(content, answers) {
       return {
-        content : content,
-        answers : answers,
-        id:  uuid.v1()
+        content: content,
+        answers: answers,
+        id: uuid.v1()
       };
     }
+
     function getVotesForSummary(summaryId) {
       return votesModel.getVotesForItem(summaryId);
     }

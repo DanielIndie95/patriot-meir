@@ -61,7 +61,7 @@
               <md-list-item ng-repeat="question in newSummary.questions">
                 <div>
                   <h3>{{question.question}}</h3>
-                  <p>{{question.answer}}</p>
+                  <p ng-repeat="answer in question.answers">{{answer}}</p>
                 </div>
               </md-list-item>
 

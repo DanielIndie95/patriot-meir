@@ -14,6 +14,8 @@
     api.createUser = createUser;
     api.getUserScore = getUserScore;
     api.getCurrentUser = getCurrentUser;
+    api.login = login;
+    api.auth = auth;
 
     function createUser(name, email, password) {
       return firebase.auth().createUserWithEmailAndPassword(email, password, {
@@ -43,6 +45,20 @@
     function getCurrentUser(){
       var user = firebase.auth().currentUser;
       return user;
+    }
+
+    function login(email , password)
+    {
+      return firebase.auth().signInWithEmailAndPassword(
+        email,
+        password
+      );
+    }
+
+    function auth(){
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      return firebase.auth().signInWithPopup(provider);
     }
 
     ctr();
