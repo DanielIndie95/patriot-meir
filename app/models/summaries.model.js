@@ -72,9 +72,13 @@
           summary.id = id;
 
           result.push(summary);
-          usersModel.getUserName(summary.ownerId).then(function (userName) {
-            summary.author = userName;
-          });
+          var setSummaryAuthor = function(realSummary)
+          {
+
+            usersModel.getUserName(realSummary.ownerId).then(function (userName) {
+              realSummary.author = userName;
+            });
+          }(summary);
         }
         return result;
       })

@@ -69,7 +69,7 @@
         return summaries;
       }
       summaries.forEach(summary => {
-        if (summary.tags.filter(tag => categoriesText.indexOf(tag.name) > -1).length > 0) {
+        if (summary.tags.filter(tag => categoriesText.indexOf(tag) > -1).length > 0) {
           visibleSummaries.push(summary);
         }
       });
