@@ -16,11 +16,11 @@
         function AddVote(item , rating)
         {
             var user = firebase.auth().currentUser;
-            
+
             if(user)
             {
                 var userId = user.uid;
-                firebase.database().ref(`votes/${item}/${userId}`).set({                   
+                firebase.database().ref(`votes/${item}/${userId}`).set({
                     "rating":  rating
                 });
             }
@@ -36,7 +36,7 @@
                     if(models.hasOwnProperty(model))
                         votes.push(models[model].rating)
                 }
-                return votes;
+                return {votes: votes , item : item};
             });
         }
         ctr();

@@ -32,6 +32,8 @@
         return firebase.database().ref(`/summaries/`).push(summary)
           .then(function (data) {
             return data.getKey();
+          }).then(function (data) {
+            return votesModel.addVote(data, 10);
           });
       }
     }
@@ -61,16 +63,16 @@
 
     function getSummaries() {
       return firebase.database().ref('/summaries/').once('value').then(function (data) {
-        var summaries=  data.val();
+        var summaries = data.val();
         var result = [];
-        for(var id in summaries){
+        for (var id in summaries) {
           var summary = summaries[id];
           var comments = convertDbCommentsToComments(summary.comments);
           summary.comments = comments;
           summary.id = id;
 
           result.push(summary);
-          usersModel.getUserName(summary.ownerId).then(function(userName){
+          usersModel.getUserName(summary.ownerId).then(function (userName) {
             summary.author = userName;
           });
         }
@@ -94,7 +96,7 @@
     }
 
     function convertDbCommentsToComments(dbComments) {
-      if(dbComments!= undefined) {
+      if (dbComments != undefined) {
         dbComments.map(function (commentData) {
           return convertDbCommentToComment(commentData);
         });

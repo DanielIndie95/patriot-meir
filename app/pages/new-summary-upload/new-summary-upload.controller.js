@@ -39,10 +39,9 @@
       var tags = vm.tags;
       var questions = JSON.parse(angular.toJson(vm.questions));
 
-      usersModel.auth()
-        .then(function (result) {
-          summaryModel.addNewSummary(header, content, tags, questions);
-        });
+      usersModel.login(function () {
+        summaryModel.addNewSummary(header, content, tags, questions);
+      });
     }
 
     function onAddNewQuestion() {

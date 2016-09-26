@@ -2,7 +2,7 @@
     <span ng-mouseenter="isOpen = true" class="star-rating-preview">
         <div class="star-rating-preview-star">
             <div class="star unfilled"><i  class="fa fa-star"></i></div>
-            <div class="star filled" ng-style="{'-webkit-clip-path': 'inset(0% '+rating.percent()+'% 0% 0%)'}"><i  class="fa fa-star"></i></div>
+            <div class="star filled" ng-style="{'-webkit-clip-path': 'inset(0% '+percent()+'% 0% 0%)'}"><i  class="fa fa-star"></i></div>
         </div>
         <div class="star-info">
           <span><span class="rating-value">{{rating.value}}</span>/<span class="rating-max">{{max}}</span></span>
