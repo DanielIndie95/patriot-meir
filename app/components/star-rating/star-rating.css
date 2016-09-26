@@ -16,10 +16,14 @@ html,body{background: #fff;}
 .star-raiting-container .star.filled {
   color: #fd0;
 }
+.star-rating-preview-star{position: relative; display: inline-block; vertical-align: top;vertical-align: top; margin-right: 15px;} 
 .star-rating.readonly .star.filled {
   color: #666;
 }
-.star-rating-preview .star.filled{font-size: 55px; vertical-align: top; margin-right: 15px;}
+
+.star-rating-preview .star{font-size: 55px;} 
+.star-rating-preview .star.filled{position: absolute; clip-path: rect(0, 100%, 0, 50%); top: 0; left: 0;}
+.star-rating-preview .star.unfilled{}
 .star-rating-preview .rating-value{
   font-size: 35px;
 }
