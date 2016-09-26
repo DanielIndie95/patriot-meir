@@ -1,47 +1,24 @@
 (function () {
-<<<<<<< HEAD
   angular
     .module('summarySharing')
     .controller('MainPageCtrl', MainController)
     .filter('summariesFilter', summariesFilter);
-=======
-  angular.module('summarySharing').controller('MainPageCtrl', ['$scope', 'summariesModel',
-    'usersModel', MainController])
->>>>>>> 93fed987dd9c7ebc4b17c8850834dbe66ae55c37
 
-  function MainController($scope, summariesModel, usersModel) {
+  function MainController() {
     var vm = this;
 
     vm.categories = getCategories();
-    vm.summaries;
+    vm.summaries = getSummaries();
 
-<<<<<<< HEAD
-=======
-    getSummaries();
-
->>>>>>> 93fed987dd9c7ebc4b17c8850834dbe66ae55c37
     function getCategories() {
       return [
         {name: 'Math'},
         {name: 'Science'},
-<<<<<<< HEAD
         {name: 'History'}];
-=======
-        {
-          name: 'History'
-        }];
->>>>>>> 93fed987dd9c7ebc4b17c8850834dbe66ae55c37
     }
 
     function getSummaries() {
-      usersModel.auth().then(function () {
-        summariesModel.getSummaries()
-          .then(function (summaries) {
-            vm.summaries = summaries;
-            for (var i = 0; i < vm.summaries.length; i++) {
-              var summary = vm.summaries[i];
 
-<<<<<<< HEAD
       // getData('');
       return [{
         title: "World War II Summary",
@@ -234,30 +211,9 @@
           tags: [{name: 'History'}, {name: 'Germany'}]
         },
       ];
-=======
-              summariesModel.getVotesForSummary(summary.id)
-                .then(function (ratings) {
-                  var avg = 0;
-                  if (ratings.length) {
-                    var sum = ratings.reduce(function (a, b) {
-                      return a + b;
-                    });
-                    avg = sum / ratings.length;
-                  }
-                  summary.rating = {
-                    count: ratings.length,
-                    value: avg
-                  };
-                  $scope.$digest();
-                });
-            }
-          });
-      });
->>>>>>> 93fed987dd9c7ebc4b17c8850834dbe66ae55c37
     }
   }
 
-<<<<<<< HEAD
   function summariesFilter() {
     return function (summaries, categories) {
       var visibleSummaries = [];
@@ -277,19 +233,3 @@
   }
 
 })();
-=======
-
-    function getData(url) {
-      // $http.get('')
-      //   .then(function (response) {
-      //       return response.data;
-      //   },
-      //   function (response) {
-      //       console.log('error');
-      //       console.log(response)
-      //   });
-    }
-  }
-})
-();
->>>>>>> 93fed987dd9c7ebc4b17c8850834dbe66ae55c37
