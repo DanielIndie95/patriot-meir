@@ -1,19 +1,23 @@
 <div>
-    <h3>{{question.text}}</h3>
+  <h3>{{question.text}}</h3>
 
+  <md-input-container>
+    <label>Answer</label>
     <input type="text" ng-model="question.answerText"/>
-    <button>Submit</button>
+  </md-input-container>
+  <md-button class="md-primary md-raised">Submit</md-button>
 
-    <h4>Answers:</h4>
-    <md-list>
-        <md-list-item ng-repeat="answer in question.answers">
-          <div layout="column">
-            <img ng-src={{'https://s3.amazonaws.com/uifaces/faces/twitter/'+answer.user.id+'/128.jpg'}}
-                 class="md-avatar" alt="{{answer.user.name}}"/>
-            <span>{{answer.created}}</span>
-            <star-rating rating="answer.rating" on-rating-select="vote(answer)"></star-rating>
-          </div>
-            <p>{{answer.text}}</p>
-        </md-list-item>
-    </md-list>
+  <h4>Answers:</h4>
+  <md-list>
+    <md-list-item ng-repeat="answer in question.answers">
+      <md-content flex="5" layout="column">
+        <img ng-src={{'https://s3.amazonaws.com/uifaces/faces/twitter/'+answer.user.id+'/128.jpg'}}
+             class="md-avatar" alt="{{answer.user.name}}"/>
+        <span >{{answer.user.name}}</span>
+        <span >{{answer.created}}</span>
+      </md-content>
+      <p flex>{{answer.text}}</p>
+      <star-rating rating="answer.rating" on-rating-select="vote(answer)"></star-rating>
+    </md-list-item>
+  </md-list>
 </div>
