@@ -7,7 +7,7 @@
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded ng-class="{'hide-selected-text': hideContent}">
-        <md-expansion-panel-header>
+        <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Expanded Title</div>
           <div class="md-summary">Expanded Summary</div>
           <md-expansion-panel-icon></md-expansion-panel-icon>
@@ -31,10 +31,9 @@
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded>
-        <md-expansion-panel-header>
+        <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Questions</div>
           <div class="md-summary">Summary questions: {{vm.questions.length}}</div>
-          <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <md-list>
@@ -56,10 +55,9 @@
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded>
-        <md-expansion-panel-header>
+        <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Comments</div>
           <div class="md-summary">Summary comments: {{vm.comments.length}}</div>
-          <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <md-list>
