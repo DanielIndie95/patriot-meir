@@ -1,3 +1,8 @@
+<md-input-container>
+  <label>Title</label>
+  <input ng-model="newSummary.title">
+</md-input-container>
+
 <input id="editor" rows="10" cols="80"/>
 <md-input-container ng-keypress="newSummary.onAddTag()">
   <label>Add Tags</label>
@@ -67,3 +72,4 @@
 </md-expansion-panel-group>
 
 <md-button class="md-primary md-raised" ng-click="newSummary.onUploadSummary()">Upload</md-button>
+<md-button class="md-primary md-raised" href="#/main">Cancel</md-button>

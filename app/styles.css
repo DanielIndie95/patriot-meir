@@ -1,3 +1,9 @@
 md-expansion-panel-collapsed {
   cursor: pointer;
 }
+.categories-sidebar-container md-toolbar{padding: 8px;}
+.searchContainer{text-align: center;}
+.searchContainer .searchInput{width: 100%;}
+.searchContainer .searchButton{display: inline-block;}
+md-input-container{position: relative;}
+md-input-container button{position: absolute; right: 0; top: 0;}

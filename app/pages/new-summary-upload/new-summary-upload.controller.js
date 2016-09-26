@@ -33,8 +33,14 @@
     }
 
     function onUploadSummary() {
-      //get text from the editor
-      var data = CKEDITOR.instances.editor.getData();
+      var content = CKEDITOR.instances.editor.getData();
+      var header = vm.title;
+      var tags = vm.tags;
+
+      // todo: call db function
+
+      // todo: add questions to db: vm.questions
+
     }
 
     function onAddNewQuestion() {
