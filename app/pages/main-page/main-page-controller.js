@@ -7,9 +7,13 @@
     vm.categories = getCategories();
     vm.summaries = getSummaries();
 
-    function getCategories() {
-      return ['Math', 'Science', 'History'];
-    }
+        function getCategories() {
+            return [
+              {name:'Math'},
+              {name: 'Science'},
+              {name: 'History'
+            }];
+        }
 
     function getSummaries() {
 
