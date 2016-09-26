@@ -1,8 +1,9 @@
 (function () {
 
-  angular.module('summarySharing').controller('newSummaryUploadController', [newSummaryUploadController]);
+  angular.module('summarySharing').controller('newSummaryUploadController', ['summariesModel', 'usersModel',
+    newSummaryUploadController]);
 
-  function newSummaryUploadController() {
+  function newSummaryUploadController(summaryModel, usersModel) {
 
     var vm = this;
 
@@ -14,15 +15,15 @@
     vm.questions = [
       {
         question: "How is the supreme leader?",
-        answer: "General Aladin"
+        answers: ["General Aladin", "123"]
       },
       {
         question: "How is the supreme leader?",
-        answer: "General Aladin"
+        answers: ["General Aladin", "123"]
       },
       {
         question: "How is the supreme leader?",
-        answer: "General Aladin"
+        answers: ["General Aladin", "123"]
       }
     ];
 
@@ -36,15 +37,16 @@
       var content = CKEDITOR.instances.editor.getData();
       var header = vm.title;
       var tags = vm.tags;
+      var questions = JSON.parse(angular.toJson(vm.questions));
 
-      // todo: call db function
-
-      // todo: add questions to db: vm.questions
-
+      usersModel.auth()
+        .then(function (result) {
+          summaryModel.addNewSummary(header, content, tags, questions);
+        });
     }
 
     function onAddNewQuestion() {
-      vm.questions.push({question: vm.newQuestion, answer: vm.newAnswer});
+      vm.questions.push({question: vm.newQuestion, answers: [vm.newAnswer]});
       vm.newAnswer = '';
       vm.newQuestion = '';
     }
