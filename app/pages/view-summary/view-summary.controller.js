@@ -20,6 +20,10 @@
                 count: 345,
                 value: 7.3
               },
+              user: {
+                name: 'Daniel',
+                id: 'abinav_t'
+              },
               created: '19/06/2016',
               text: 'answer 1.1'
             },
@@ -28,6 +32,10 @@
                 count: 234,
                 value: 6.3
               },
+              user: {
+                name: 'Yosi',
+                id: 'cheth'
+              },
               created: '15/06/2016',
               text: 'answer 1.2'
             },
@@ -35,6 +43,10 @@
               rating: {
                 count: 456,
                 value: 3.6
+              },
+              user: {
+                name: 'Eyal Golan',
+                id: 'ritu'
               },
               created: '13/06/2016',
               text: 'answer 1.3'
@@ -48,6 +60,10 @@
                 count: 567,
                 value: 9.3
               },
+              user: {
+                name: 'Daniel',
+                id: 'abinav_t'
+              },
               created: '19/06/2016',
               text: 'answer 2.1'
             },
@@ -56,6 +72,10 @@
                 count: 433,
                 value: 6.1
               },
+              user: {
+                name: 'Daniel',
+                id: 'abinav_t'
+              },
               created: '15/06/2016',
               text: 'answer 2.2'
             },
@@ -63,6 +83,10 @@
               rating: {
                 count: 112,
                 value: 5.6
+              },
+              user: {
+                name: 'Daniel',
+                id: 'abinav_t'
               },
               created: '13/06/2016',
               text: 'answer 2.3'
@@ -82,9 +106,9 @@
         ).then(function (authData, x) {
           firebase.auth().currentUser.updateProfile({
             displayName: "merichka"
-          }).then(function(){
+          }).then(function () {
             votesModel.addVote("bomtoin12", number);
-            var votes = votesModel.getVotesForItem("bomtoin12" , number);
+            var votes = votesModel.getVotesForItem("bomtoin12", number);
           })
         });
       }

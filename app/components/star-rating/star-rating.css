@@ -4,6 +4,7 @@
   display: inline-block;
 }
 html,body{background: #fff;}
+.small .star-rating-preview .star{font-size: 35px;}
 .star-raiting-container .star {
   padding: 1px;
   color: #ddd;

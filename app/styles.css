@@ -7,3 +7,5 @@ md-expansion-panel-collapsed {
 .searchContainer .searchButton{display: inline-block;}
 md-input-container{position: relative;}
 md-input-container button{position: absolute; right: 0; top: 0;}
+.full-input{width: 100%; margin: auto; padding: 0 60px;}
+.full-input md-input-container{width: 100%;}
