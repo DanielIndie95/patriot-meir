@@ -2,22 +2,19 @@
   <md-expansion-panel-group md-component-id="panelGroup" multiple>
     <md-expansion-panel md-component-id="summary-panel">
       <md-expansion-panel-collapsed>
-        <div class="md-title">Title</div>
-        <div class="md-summary">Summary</div>
-        <md-expansion-panel-icon></md-expansion-panel-icon>
+        <div class="md-title">{{vm.summary.header}}</div>
+        <star-rating rating="vm.summary.rating"></star-rating>
       </md-expansion-panel-collapsed>
-      <md-expansion-panel-expanded ng-class="{'hide-selected-text': hideContent}">
+      <md-expansion-panel-expanded ng-class="{'hide-selected-text': vm.hideContent}">
         <md-expansion-panel-header ng-click="$panel.collapse()">
-          <div class="md-title">Expanded Title</div>
-          <div class="md-summary">Expanded Summary</div>
-          <md-expansion-panel-icon></md-expansion-panel-icon>
+          <div class="md-title">{{vm.summary.header}}</div>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
-          <h4>Content</h4>
-          <p>Put content in here</p>
+          <span ng-bind-html="vm.summary.content"></span>
         </md-expansion-panel-content>
-        <button ng-click="hideContent = !hideContent">{{hideContent ? "Dont hide selection" : 'Hide selection'}}</button>
+
         <md-expansion-panel-footer>
+          <md-button ng-click="vm.hideContent = !vm.hideContent">{{vm.hideContent ? "Dont hide selection" : 'Hide selection'}}</md-button>
           <div flex></div>
           <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
         </md-expansion-panel-footer>
@@ -27,17 +24,17 @@
     <md-expansion-panel md-component-id="questions-panel">
       <md-expansion-panel-collapsed>
         <div class="md-title">Questions</div>
-        <div class="md-summary">Summary questions : {{vm.questions.length}}</div>
+        <div class="md-summary">Summary questions : {{vm.summary.questions.length}}</div>
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded>
         <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Questions</div>
-          <div class="md-summary">Summary questions: {{vm.questions.length}}</div>
+          <div class="md-summary">Summary questions: {{vm.summary.questions.length}}</div>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <md-list>
-            <md-list-item ng-repeat="question in vm.questions">
+            <md-list-item ng-repeat="question in vm.summary.questions">
               <view-summary-question style="width: 100%" question="question"></view-summary-question>
             </md-list-item>
           </md-list>
@@ -51,17 +48,17 @@
     <md-expansion-panel md-component-id="comments-panel">
       <md-expansion-panel-collapsed>
         <div class="md-title">Comments</div>
-        <div class="md-summary">Summary comments : {{vm.comments.length}}</div>
+        <div class="md-summary">Summary comments : {{vm.summary.comments.length}}</div>
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded>
         <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Comments</div>
-          <div class="md-summary">Summary comments: {{vm.comments.length}}</div>
+          <div class="md-summary">Summary comments: {{vm.summary.comments.length}}</div>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <md-list>
-            <md-list-item ng-repeat="comment in vm.comments">
+            <md-list-item ng-repeat="comment in vm.summary.comments">
               <img ng-src={{'https://s3.amazonaws.com/uifaces/faces/twitter/'+comment.user.id+'/128.jpg'}}
                    class="md-avatar" alt="{{comment.user.name}}"/>
               <div class="md-list-item-text" layout="column">

@@ -1,25 +1,24 @@
 (function () {
-  angular.module('summarySharing').controller('MainPageCtrl', ['$scope', 'summariesModel',
-    'usersModel', MainController])
+  angular
+    .module('summarySharing')
+    .controller('MainPageCtrl', ['$scope', 'usersModel', 'summariesModel', MainController])
+    .filter('summariesFilter', summariesFilter);
 
-  function MainController($scope, summariesModel, usersModel) {
+  function MainController($scope, usersModel, summariesModel) {
     var vm = this;
 
     vm.categories = getCategories();
-    vm.summaries;
-
-    getSummaries();
+    vm.summaries = getSummaries();
 
     function getCategories() {
       return [
         {name: 'Math'},
         {name: 'Science'},
-        {
-          name: 'History'
-        }];
+        {name: 'History'}];
     }
 
     function getSummaries() {
+
       usersModel.login(function () {
         summariesModel.getSummaries()
           .then(function (summaries) {
@@ -58,18 +57,24 @@
           });
       });
     }
+  }
 
-
-    function getData(url) {
-      // $http.get('')
-      //   .then(function (response) {
-      //       return response.data;
-      //   },
-      //   function (response) {
-      //       console.log('error');
-      //       console.log(response)
-      //   });
+  function summariesFilter() {
+    return function (summaries, categories) {
+      var visibleSummaries = [];
+      var categoriesText = categories
+        .filter(category => category.selected)
+        .map(category => category.name);
+      if(categoriesText.length === 0){
+        return summaries;
+      }
+      summaries.forEach(summary => {
+        if (summary.tags.filter(tag => categoriesText.indexOf(tag.name) > -1).length > 0) {
+          visibleSummaries.push(summary);
+        }
+      });
+      return visibleSummaries;
     }
   }
-})
-();
+
+})();
