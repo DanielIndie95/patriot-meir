@@ -1,15 +1,29 @@
 (function () {
 
-    var app = angular.module('summarySharing');
-    app.controller("viewSummaryCtrl", ViewSummaryCtrl);
+  var app = angular.module('summarySharing');
+  app.controller("viewSummaryCtrl", ViewSummaryCtrl);
 
-    ViewSummaryCtrl.$inject = ["$scope", "votesModel"];
+  ViewSummaryCtrl.$inject = ["$scope", "votesModel"];
 
-    function ViewSummaryCtrl($scope, votesModel) {
-    var vm  =  this;
-    vm.questions = getQuestions();
-    vm.comments = getComments();
+  function ViewSummaryCtrl($scope, votesModel) {
+    var vm = this;
+
+    vm.summary = getSummary();
+
     vm.hideContent = false;
+
+    function getSummary() {
+      return {
+        header: 'Hello World Summary',
+        rating: {
+          value: 9.3,
+          count: 456
+        },
+        questions: getQuestions(),
+        comments: getComments()
+      };
+    }
+
     function getQuestions() {
       return [
         {

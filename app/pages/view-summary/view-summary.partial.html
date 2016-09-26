@@ -2,22 +2,20 @@
   <md-expansion-panel-group md-component-id="panelGroup" multiple>
     <md-expansion-panel md-component-id="summary-panel">
       <md-expansion-panel-collapsed>
-        <div class="md-title">Title</div>
-        <div class="md-summary">Summary</div>
-        <md-expansion-panel-icon></md-expansion-panel-icon>
+        <div class="md-title">{{vm.summary.header}}</div>
+        <star-rating rating="vm.summary.rating"></star-rating>
       </md-expansion-panel-collapsed>
-      <md-expansion-panel-expanded ng-class="{'hide-selected-text': hideContent}">
+      <md-expansion-panel-expanded ng-class="{'hide-selected-text': vm.hideContent}">
         <md-expansion-panel-header ng-click="$panel.collapse()">
-          <div class="md-title">Expanded Title</div>
-          <div class="md-summary">Expanded Summary</div>
-          <md-expansion-panel-icon></md-expansion-panel-icon>
+          <div class="md-title">{{vm.summary.header}}</div>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <h4>Content</h4>
           <p>Put content in here</p>
         </md-expansion-panel-content>
-        <button ng-click="hideContent = !hideContent">{{hideContent ? "Dont hide selection" : 'Hide selection'}}</button>
+
         <md-expansion-panel-footer>
+          <md-button ng-click="vm.hideContent = !vm.hideContent">{{vm.hideContent ? "Dont hide selection" : 'Hide selection'}}</md-button>
           <div flex></div>
           <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
         </md-expansion-panel-footer>
