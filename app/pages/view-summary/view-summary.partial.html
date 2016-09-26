@@ -6,8 +6,8 @@
         <div class="md-summary">Summary</div>
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
-      <md-expansion-panel-expanded>
-        <md-expansion-panel-header>
+      <md-expansion-panel-expanded ng-class="{'hide-selected-text': hideContent}">
+        <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Expanded Title</div>
           <div class="md-summary">Expanded Summary</div>
           <md-expansion-panel-icon></md-expansion-panel-icon>
@@ -16,6 +16,7 @@
           <h4>Content</h4>
           <p>Put content in here</p>
         </md-expansion-panel-content>
+        <button ng-click="hideContent = !hideContent">{{hideContent ? "Dont hide selection" : 'Hide selection'}}</button>
         <md-expansion-panel-footer>
           <div flex></div>
           <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
@@ -30,15 +31,14 @@
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded>
-        <md-expansion-panel-header>
+        <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Questions</div>
           <div class="md-summary">Summary questions: {{vm.questions.length}}</div>
-          <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <md-list>
             <md-list-item ng-repeat="question in vm.questions">
-              <view-summary-question question="question"></view-summary-question>
+              <view-summary-question style="width: 100%" question="question"></view-summary-question>
             </md-list-item>
           </md-list>
         </md-expansion-panel-content>
@@ -55,10 +55,9 @@
         <md-expansion-panel-icon></md-expansion-panel-icon>
       </md-expansion-panel-collapsed>
       <md-expansion-panel-expanded>
-        <md-expansion-panel-header>
+        <md-expansion-panel-header ng-click="$panel.collapse()">
           <div class="md-title">Comments</div>
           <div class="md-summary">Summary comments: {{vm.comments.length}}</div>
-          <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
           <md-list>
@@ -80,7 +79,6 @@
       </md-expansion-panel-expanded>
     </md-expansion-panel>
   </md-expansion-panel-group>
-
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 

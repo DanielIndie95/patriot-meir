@@ -9,7 +9,7 @@
     var vm  =  this;
     vm.questions = getQuestions();
     vm.comments = getComments();
-
+    vm.hideContent = false;
     function getQuestions() {
       return [
         {
@@ -25,7 +25,7 @@
                 id: 'abinav_t'
               },
               created: '19/06/2016',
-              text: 'answer 1.1'
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non eleifend erat. Aliquam erat volutpat. Vivamus fringilla lorem a ligula commodo tincidunt. Etiam velit lacus, convallis in purus eu, maximus interdum ante. Sed tincidunt pharetra tortor, vitae rutrum dui sagittis sed. Donec faucibus venenatis mollis. Proin vel consectetur augue, ut blandit arcu.'
             },
             {
               rating: {
@@ -37,7 +37,7 @@
                 id: 'cheth'
               },
               created: '15/06/2016',
-              text: 'answer 1.2'
+              text: 'Phasellus sagittis egestas quam, sollicitudin condimentum nulla imperdiet quis. Aliquam erat volutpat. Donec id consectetur sem. Duis et ipsum at nunc lacinia porta at ac eros. Proin condimentum venenatis leo, sit amet efficitur sem lacinia sed. Vestibulum et magna sit amet neque ullamcorper ultricies eget eget diam. Nam sed sagittis nibh.  '
             },
             {
               rating: {
@@ -49,7 +49,7 @@
                 id: 'ritu'
               },
               created: '13/06/2016',
-              text: 'answer 1.3'
+              text: 'Donec dignissim pharetra nibh ut interdum. Praesent aliquet dolor tortor, vestibulum consequat velit fermentum vitae. Sed et justo in nibh tristique luctus id in ipsum. Nam ipsum turpis, gravida in fermentum eu, sodales quis justo. Nunc scelerisque mi neque, id dapibus felis aliquam quis. Cras vestibulum tellus nec lobortis bibendum. Donec a felis nulla. Etiam porttitor pellentesque est.'
             }
           ]
         }, {
