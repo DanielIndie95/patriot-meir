@@ -9,7 +9,7 @@
     var vm  =  this;
     vm.questions = getQuestions();
     vm.comments = getComments();
-
+    vm.hideContent = false;
     function getQuestions() {
       return [
         {
