@@ -7,9 +7,13 @@
     <h4>Answers:</h4>
     <md-list>
         <md-list-item ng-repeat="answer in question.answers">
+          <div layout="column">
+            <img ng-src={{'https://s3.amazonaws.com/uifaces/faces/twitter/'+answer.user.id+'/128.jpg'}}
+                 class="md-avatar" alt="{{answer.user.name}}"/>
+            <span>{{answer.created}}</span>
             <star-rating rating="answer.rating" on-rating-select="vote(answer)"></star-rating>
-            <div>{{answer.created}}</div>
-            <div>{{answer.text}}</div>
+          </div>
+            <p>{{answer.text}}</p>
         </md-list-item>
     </md-list>
 </div>
