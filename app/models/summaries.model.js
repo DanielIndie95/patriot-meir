@@ -27,7 +27,8 @@
 
       if (user) {
         var summary = createSumamry(header, content, tags, user);
-        firebase.database().ref(`/summaries/`).push(summary);
+        var id  = firebase.database().ref(`/summaries/`).push(summary);
+        return id;
       }
     }
 
@@ -91,7 +92,7 @@
       var comments = getCommentsForSummary(summaryId);
       var user = usersModel.getCurrentUser();
       var newComment = createComment(comment , user);
-      comments.push(comment);
+      comments.push(newComment);
       var summary = firebase.database().ref(`/summaries/${summaryId}`);
 
       summary.update({'comments': comments});
@@ -104,14 +105,6 @@
         user : user.uid
       };
     }
-
-    function getCommentsForSummary(summaryId){
-      return firebase.database().ref(`/summaries/${summaryId}`).once('value').then(function (data) {
-        var summary = data.val();
-        return summary.comments;
-      });
-    }
-
     function getTagsForSummary(summaryId) {
       return firebase.database().ref(`/summaries/${summaryId}`).once('value').then(function (data) {
         var summary = data.val();
@@ -164,7 +157,8 @@
     function createNewQuestion(content , answers){
       return {
         content : content,
-        answers : answers
+        answers : answers,
+        id:  uuid.v1()
       };
     }
     function getVotesForSummary(summaryId) {
