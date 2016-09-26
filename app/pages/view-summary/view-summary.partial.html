@@ -10,8 +10,7 @@
           <div class="md-title">{{vm.summary.header}}</div>
         </md-expansion-panel-header>
         <md-expansion-panel-content>
-          <h4>Content</h4>
-          <p>Put content in here</p>
+          <span ng-bind-html="vm.summary.content"></span>
         </md-expansion-panel-content>
 
         <md-expansion-panel-footer>
