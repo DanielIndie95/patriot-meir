@@ -1,13 +1,18 @@
-<md-input-container>
-  <label>Title</label>
-  <input ng-model="newSummary.title">
-</md-input-container>
 
+<div class="full-input">
+  <md-input-container>
+    <label>Title</label>
+    <input ng-model="newSummary.title">
+  </md-input-container>
+</div>
 <input id="editor" rows="10" cols="80"/>
-<md-input-container ng-keypress="newSummary.onAddTag()">
-  <label>Add Tags</label>
-  <input type="text" ng-model="newSummary.newTag"/>
-</md-input-container>
+
+<div class="full-input">
+  <md-input-container ng-keypress="newSummary.onAddTag()">
+    <label>Add Tags</label>
+    <input type="text" ng-model="newSummary.newTag"/>
+  </md-input-container>
+</div>
 
 <md-chips ng-model="newSummary.tags"></md-chips>
 
@@ -31,16 +36,20 @@
 
       <md-expansion-panel-content>
         <div>
-          <md-input-container>
-            <label>Question</label>
-            <textarea class="newQuestionTextArea" type="text" ng-model="newSummary.newQuestion"/>
-          </md-input-container>
+          <div class="full-input">
+            <md-input-container>
+              <label>Question</label>
+              <textarea class="newQuestionTextArea" type="text" ng-model="newSummary.newQuestion"/>
+            </md-input-container>
+          </div>
         </div>
         <div>
-          <md-input-container>
-            <label>Answer</label>
-            <textarea class="newAnswerTextArea" type="text" ng-model="newSummary.newAnswer"/>
-          </md-input-container>
+          <div class="full-input">
+            <md-input-container>
+              <label>Answer</label>
+              <textarea class="newAnswerTextArea" type="text" ng-model="newSummary.newAnswer"/>
+            </md-input-container>
+          </div>
         </div>
         <div>
           <md-button class="md-primary md-raised" ng-click="newSummary.onAddNewQuestion()">Add</md-button>
