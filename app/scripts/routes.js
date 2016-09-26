@@ -12,7 +12,7 @@
             .when('/main', {
                 templateUrl: 'pages/main-page/main-page.template.html',
                 controller: 'MainPageCtrl',
-                controllerAs: 'main'
+                controllerAs: 'vm'
             });
     }
 })();
